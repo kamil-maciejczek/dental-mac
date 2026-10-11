@@ -5,7 +5,7 @@ Runs three Windows dental programs on an Apple Silicon Mac through [HighBall](ht
 | Program | Version | Status |
 |---|---|---|
 | Blue Sky Plan (Blue Sky Bio) | 5.0.29 | works, GPU-accelerated (needs our OpenGL 4.3 shim) |
-| DentiqGuide (3D Industrial Imaging) | 1.4.00 | works for manual planning (AI automation needs a DirectX 12 GPU → not on macOS) |
+| DentiqGuide (3D Industrial Imaging) | 1.4.00 | works for manual planning (AI automation needs DirectML on a DirectX 12 GPU → not available on macOS) |
 | CS 3D Imaging (Carestream) | 3.10.48 | works incl. 3D volume rendering |
 
 Verified on a MacBook Pro M1 Pro, macOS 26.5.1; the scripts were run end-to-end from scratch (separate HighBall home) on 2026-10-11 and all five steps passed. Target: any Apple Silicon Mac, macOS 14 or newer, ~20 GB free, internet.
