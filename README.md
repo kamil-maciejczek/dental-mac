@@ -15,7 +15,7 @@ Full engineering record (every finding, dead end and workaround): [docs/SETUP-LO
 
 1. Get this repo onto the Mac. It is private, so either AirDrop/copy the folder, or on the Mac run (with a GitHub token that can read it):
    ```bash
-   mkdir -p ~/dental-mac && curl -fsSL -H "Authorization: token GITHUB_TOKEN" -L https://api.github.com/repos/OWNER/REPO/tarball/main | tar -xz --strip-components=1 -C ~/dental-mac
+   mkdir -p ~/dental-mac && curl -fsSL -H "Authorization: token GITHUB_TOKEN" -L https://api.github.com/repos/kamil-maciejczek/dental-mac/tarball/main | tar -xz --strip-components=1 -C ~/dental-mac
    ```
 2. (Only for CS 3D Imaging) download `CS3DSuite.exe` from the dealer portal (lekarz.diagdent.pl → do pobrania) into `~/Downloads/dental-installers/cs3d/`.
 3. Run everything (30–60 min, mostly downloads and the .NET install; asks for your password once for Rosetta):
