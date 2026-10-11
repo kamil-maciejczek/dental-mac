@@ -19,4 +19,4 @@ Tip: drag these three to the Dock. The first start of each takes about a minute 
 
 ## If something breaks
 Quit the program (Highball window → environment → Stop), start it again from the launcher. Logs are in
-`~/Library/Application Support/Highball/logs/`. The technical setup record is in the `dental soft/README.md` on Kamil's Mac.
+`~/Library/Application Support/Highball/logs/`. The technical setup record is in the `dental soft/README.md` in the repo (docs/SETUP-LOG.md).
