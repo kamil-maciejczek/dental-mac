@@ -5,7 +5,7 @@ echo "== Dental apps installer (Blue Sky Plan, DentiqGuide, CS 3D Imaging via Hi
 if [ "$(uname -m)" != "arm64" ]; then echo "This package is for Apple Silicon Macs only."; exit 1; fi
 HB="$HOME/Library/Application Support/Highball"
 echo "[1/5] Installing the Highball app..."
-if [ ! -d /Applications/Highball.app ]; then M=$(hdiutil attach -nobrowse -quiet Highball.dmg | grep -oE '/Volumes/.*' | head -1); cp -R "$M/Highball.app" /Applications/; hdiutil detach "$M" -quiet; else echo "   already installed"; fi
+if [ ! -d /Applications/Highball.app ]; then MP="$(mktemp -d)"; yes | hdiutil attach -nobrowse -quiet -mountpoint "$MP" Highball.dmg >/dev/null; cp -R "$MP"/*.app /Applications/; hdiutil detach "$MP" -quiet || true; else echo "   already installed"; fi
 echo "[2/5] Installing Rosetta 2 (needed to run Windows programs; may ask for your password)..."
 if ! /usr/bin/pgrep -q oahd; then softwareupdate --install-rosetta --agree-to-license || echo "   (Rosetta will be offered by Highball on first start)"; else echo "   already installed"; fi
 echo "[3/5] Copying the prepared Windows environments (~11 GB, a few minutes)..."
