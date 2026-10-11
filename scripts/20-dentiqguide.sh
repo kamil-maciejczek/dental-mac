@@ -49,6 +49,7 @@ if [ ! -f "$C/windows/Microsoft.NET/Framework64/v4.0.30319/clr.dll" ]; then
   [ -f "$C/windows/Microsoft.NET/Framework64/v4.0.30319/clr.dll" ] || die ".NET 4.8 install failed, see $DL/dentiqguide/dotnet48.log"
 fi
 
+mkdir -p "$C/users/Public/Documents/DentiqGuideN"   # the helper crashes (.NET exception) if its log folder does not exist yet
 log "post-install registration the stalled setup never did + WPF software rendering"
 hbq run $B "C:\\windows\\system32\\reg.exe" -- add "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\DentiqGuideN.exe" /ve /d "C:\\Program Files\\DentiqGuideN\\PlatformGuideN.exe" /f >/dev/null
 hbq run $B "C:\\windows\\system32\\reg.exe" -- add "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\DentiqGuideN.exe" /v Path /d "C:\\Program Files\\DentiqGuideN" /f >/dev/null
