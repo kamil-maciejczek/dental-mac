@@ -1,5 +1,6 @@
 # Shared helpers. Source from the step scripts. Only tools that ship with macOS are used.
 set -eu
+trap 'rc=$?; [ $rc -ne 0 ] && printf "\nFAILED (exit %s) in %s at line %s\n" "$rc" "$0" "$LINENO" >&2' EXIT
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 HBHOME="${HIGHBALL_HOME:-$HOME/Library/Application Support/Highball}"
 CLI="${HIGHBALL_CLI:-$REPO/bin/highball}"

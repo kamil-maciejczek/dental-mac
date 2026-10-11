@@ -4,8 +4,9 @@
 log "Highball.app (pinned v0.10.10)"
 if [ ! -d /Applications/Highball.app ]; then
   fetch "https://github.com/gauthierpiarrette/highball/releases/download/v0.10.10/Highball.dmg" "$DL/Highball.dmg"
-  MP="$(mktemp -d)"; yes | hdiutil attach -nobrowse -quiet -mountpoint "$MP" "$DL/Highball.dmg" >/dev/null
-  APP="$(ls -d "$MP"/*.app | head -1)"; [ -d "$APP" ] || die "no .app inside Highball.dmg"; cp -R "$APP" /Applications/; hdiutil detach "$MP" -quiet || true
+  if [ -d /Volumes/Highball/Highball.app ]; then APP=/Volumes/Highball/Highball.app; MP=/Volumes/Highball   # left mounted by an earlier run
+  else MP="$(mktemp -d)"; yes | hdiutil attach -nobrowse -quiet -mountpoint "$MP" "$DL/Highball.dmg" || die "could not mount $DL/Highball.dmg (delete it and rerun to re-download)"; APP="$(ls -d "$MP"/*.app | head -1)"; fi
+  [ -d "$APP" ] || die "no .app inside Highball.dmg"; cp -R "$APP" /Applications/; hdiutil detach "$MP" -quiet 2>/dev/null || true
   xattr -dr com.apple.quarantine /Applications/Highball.app 2>/dev/null || true
 else echo "   already installed: $(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' /Applications/Highball.app/Contents/Info.plist)"; fi
 log "Rosetta 2"; if /usr/bin/pgrep -q oahd; then echo "   already installed"; else /usr/sbin/softwareupdate --install-rosetta --agree-to-license; fi
