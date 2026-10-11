@@ -1,0 +1,4 @@
+*.log
+scripts/.test-run.*
+deploy/pack.log
+.DS_Store
